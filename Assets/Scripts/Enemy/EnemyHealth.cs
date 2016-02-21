@@ -5,7 +5,7 @@ public class EnemyHealth : MonoBehaviour
     public int startingHealth = 100;
     public int currentHealth;
     public float sinkSpeed = 2.5f;
-    public int scoreValue = 10;
+    public int scoreValue = 1;
     public AudioClip deathClip;
 
 
@@ -74,7 +74,10 @@ public class EnemyHealth : MonoBehaviour
         GetComponent <NavMeshAgent> ().enabled = false;
         GetComponent <Rigidbody> ().isKinematic = true;
         isSinking = true;
-        //ScoreManager.score += scoreValue;
+		Debug.Log (scoreValue);
+
+        ScoreManager.score += scoreValue;
+		Debug.Log (ScoreManager.score);
         Destroy (gameObject, 2f);
     }
 }
