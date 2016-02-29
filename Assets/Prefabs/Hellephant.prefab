@@ -246,7 +246,7 @@ MonoBehaviour:
   startingHealth: 300
   currentHealth: 0
   sinkSpeed: 2.5
-  scoreValue: 50
+  scoreValue: 20
   deathClip: {fileID: 8300000, guid: 8c615fd0429f34edf85539d70279360d, type: 3}
 --- !u!114 &11474866
 MonoBehaviour:
@@ -3437,6 +3437,10 @@ Prefab:
       value: 
       objectReference: {fileID: 22100000, guid: 7b2ac03da7abe45c8a397626d743a60f,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: scoreValue
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 104722}

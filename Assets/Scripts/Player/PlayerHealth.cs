@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth = 100;
-    public int currentHealth;
+    public float currentHealth;
     public Slider healthSlider;
     public Image damageImage;
     public AudioClip deathClip;
@@ -21,7 +21,9 @@ public class PlayerHealth : MonoBehaviour
     PlayerShooting playerShooting;
     bool isDead;
     bool damaged;
-
+	float timer;
+	float energyLossRate = 0.1f;
+	float energyBurned = 0.1f;
 
     void Awake ()
     {
@@ -32,10 +34,20 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = startingHealth;
     }
 
+	void loseEnergy() {
+		timer += Time.deltaTime;
+		if (timer >= energyLossRate && currentHealth > 0) {
+			timer = 0f;
+			currentHealth -= energyBurned;
+			healthSlider.value = currentHealth;
+		}
+
+	}
 
     void Update ()
     {
-        if(damaged)
+		loseEnergy ();
+		if(damaged)
         {
             damageImage.color = flashColour;
         }
@@ -55,7 +67,7 @@ public class PlayerHealth : MonoBehaviour
 
         healthSlider.value = currentHealth;
 
-        playerAudio.Play ();
+//        playerAudio.Play ();
 
         if(currentHealth <= 0 && !isDead)
         {
