@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
     public AudioClip deathClip;
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+	public float energyLossSpeed = 0.1f;
+	public float energyBurnRate = 0.1f;
 
 
     Animator anim;
@@ -22,8 +24,7 @@ public class PlayerHealth : MonoBehaviour
     bool isDead;
     bool damaged;
 	float timer;
-	float energyLossRate = 0.1f;
-	float energyBurned = 0.1f;
+
 
     void Awake ()
     {
@@ -36,26 +37,31 @@ public class PlayerHealth : MonoBehaviour
 
 	void loseEnergy() {
 		timer += Time.deltaTime;
-		if (timer >= energyLossRate && currentHealth > 0) {
+		if (timer >= energyLossSpeed && currentHealth > 0) {
 			timer = 0f;
-			currentHealth -= energyBurned;
+			currentHealth -= energyBurnRate;
 			healthSlider.value = currentHealth;
 		}
 
 	}
 
+	void UIFlashDamage(){
+		if(damaged)
+		{
+			damageImage.color = flashColour;
+		}
+		else
+		{
+			damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+		}
+		damaged = false;
+	}
+
     void Update ()
     {
 		loseEnergy ();
-		if(damaged)
-        {
-            damageImage.color = flashColour;
-        }
-        else
-        {
-            damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-        }
-        damaged = false;
+//		UIFlashDamage();
+        
     }
 
 
@@ -80,7 +86,7 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
 
-        playerShooting.DisableEffects ();
+//        playerShooting.DisableEffects ();
 
         anim.SetTrigger ("Die");
 

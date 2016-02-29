@@ -3,23 +3,29 @@ using System.Collections;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float timeBetweenAttacks = 0.5f;
-    public int attackDamage = 10;
+    public float timeBetweenAttacks = 0.05f;
+    public int energyDrain = 1;
+	public int escapeThreshold = 5;			// how much is required for monkey to resist in order to escape
 
 
     Animator anim;
     GameObject player;
     PlayerHealth playerHealth;
+	PlayerMovement playerMovement;
     EnemyHealth enemyHealth;
+	EnemyMovement enemyMovement;
     bool playerInRange;
     float timer;
+	int numResistance = 0;
 
 
     void Awake ()
     {
         player = GameObject.FindGameObjectWithTag ("Player");
         playerHealth = player.GetComponent <PlayerHealth> ();
+		playerMovement = player.GetComponent <PlayerMovement> ();
         enemyHealth = GetComponent<EnemyHealth>();
+		enemyMovement = GetComponent<EnemyMovement> ();
         anim = GetComponent <Animator> ();
     }
 
@@ -46,7 +52,7 @@ public class EnemyAttack : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
+		if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0 && enemyMovement.isStunned == false)
         {
             Attack ();
         }
@@ -62,9 +68,11 @@ public class EnemyAttack : MonoBehaviour
     {
         timer = 0f;
 
-        if(playerHealth.currentHealth > 0)
+		if(playerHealth.currentHealth > 0)
         {
-            playerHealth.TakeDamage (attackDamage);
+            playerHealth.TakeDamage (energyDrain);
+			playerMovement.ConstrainMovement ();
+
         }
     }
 }

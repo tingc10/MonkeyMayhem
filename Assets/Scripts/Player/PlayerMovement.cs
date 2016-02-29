@@ -3,10 +3,12 @@
 public class PlayerMovement : MonoBehaviour
 {
 	public float speed = 6f;
+	public bool isCaptured;
 
 	Vector3 movement;
 	Animator anim;
 	Rigidbody playerRigidBody;
+
 //	int floorMask;
 //	float camRayLength = 100f;
 
@@ -14,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 //		floorMask = LayerMask.GetMask ("Floor");
 		anim = GetComponent<Animator> ();
 		playerRigidBody = GetComponent<Rigidbody> ();
+		isCaptured = false;
 
 	}
 	void FixedUpdate() {
@@ -21,11 +24,20 @@ public class PlayerMovement : MonoBehaviour
 		float v = Input.GetAxisRaw ("Vertical");
 
 
+		if (isCaptured == false) {
+			MoveAndTurn (h, v);
+		}
 
-		MoveAndTurn (h, v);
 
 		Animating (h, v);
 	}
+
+	public void ConstrainMovement() {
+		if (isCaptured == false) {
+			isCaptured = true;
+		}
+	}
+
 	void MoveAndTurn (float h, float v) {
 		movement.Set (h, 0f, v);
 		movement = movement.normalized * speed * Time.deltaTime;
@@ -42,14 +54,17 @@ public class PlayerMovement : MonoBehaviour
 			// get its cross product, which is the axis of rotation to
 			// get from one vector to the other
 			Vector3 cross = Vector3.Cross(transform.forward, movement);
-			playerRigidBody.AddTorque (cross * angleDiff * 10);
-//			playerRigidBody.MoveRotation (newRotation);
+			playerRigidBody.AddTorque (cross * angleDiff);
+
 
 		}
 
 
 
 	}
+
+
+
 	void Turning() {
 		/* Example code - mouse to rotate */
 //		Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);

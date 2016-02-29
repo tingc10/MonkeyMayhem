@@ -7,24 +7,33 @@ public class EnemyHealth : MonoBehaviour
     public float sinkSpeed = 2.5f;
     public int scoreValue = 1;
     public AudioClip deathClip;
+	public int escapeThreshold = 5;
 
 
+	GameObject player;
+//	PlayerMovement playerMovement;
+	EnemyMovement enemyMovement;
     Animator anim;
     AudioSource enemyAudio;
     ParticleSystem hitParticles;
     CapsuleCollider capsuleCollider;
+	int amountResistance;
     bool isDead;
     bool isSinking;
 
 
     void Awake ()
     {
-        anim = GetComponent <Animator> ();
+//		player = GameObject.FindGameObjectWithTag ("Player");
+//		playerMovement = player.GetComponent <PlayerMovement> ();
+		enemyMovement = GetComponent<EnemyMovement>();
+		anim = GetComponent <Animator> ();
         enemyAudio = GetComponent <AudioSource> ();
         hitParticles = GetComponentInChildren <ParticleSystem> ();
         capsuleCollider = GetComponent <CapsuleCollider> ();
 
         currentHealth = startingHealth;
+		amountResistance = 0;
     }
 
 
@@ -37,24 +46,34 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    public void TakeDamage (int amount, Vector3 hitPoint)
-    {
-        if(isDead)
-            return;
+//    public void TakeDamage (int amount, Vector3 hitPoint)
+//    {
+//        if(isDead)
+//            return;
+//
+//        enemyAudio.Play ();
+//
+//        currentHealth -= amount;
+//            
+//        hitParticles.transform.position = hitPoint;
+//        hitParticles.Play();
+//
+//        if(currentHealth <= 0)
+//        {
+//            Death ();
+//        }
+//    }
+	public void GetWhacked () {
+		
+		amountResistance++;
+		Debug.Log (amountResistance);
+		if (amountResistance >= escapeThreshold) {
+			amountResistance = 0;
+//			playerMovement.isCaptured = false;
+			enemyMovement.Stun ();
+		}
 
-        enemyAudio.Play ();
-
-        currentHealth -= amount;
-            
-        hitParticles.transform.position = hitPoint;
-        hitParticles.Play();
-
-        if(currentHealth <= 0)
-        {
-            Death ();
-        }
-    }
-
+	}
 
     void Death ()
     {
