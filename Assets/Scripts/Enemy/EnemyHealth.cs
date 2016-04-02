@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
 	EnemyMovement enemyMovement;
     Animator anim;
     AudioSource enemyAudio;
-    ParticleSystem hitParticles;
+//    ParticleSystem hitParticles;
     CapsuleCollider capsuleCollider;
 	int amountResistance;
     bool isDead;
@@ -29,7 +29,7 @@ public class EnemyHealth : MonoBehaviour
 		enemyMovement = GetComponent<EnemyMovement>();
 		anim = GetComponent <Animator> ();
         enemyAudio = GetComponent <AudioSource> ();
-        hitParticles = GetComponentInChildren <ParticleSystem> ();
+//        hitParticles = GetComponentInChildren <ParticleSystem> ();
         capsuleCollider = GetComponent <CapsuleCollider> ();
 
         currentHealth = startingHealth;
@@ -88,15 +88,15 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    public void StartSinking ()
-    {
-        GetComponent <NavMeshAgent> ().enabled = false;
-        GetComponent <Rigidbody> ().isKinematic = true;
-        isSinking = true;
-		Debug.Log (scoreValue);
-
-        ScoreManager.score += scoreValue;
-		Debug.Log (ScoreManager.score);
-        Destroy (gameObject, 2f);
-    }
+//    public void StartSinking ()
+//    {
+//        GetComponent <NavMeshAgent> ().enabled = false;
+//        GetComponent <Rigidbody> ().isKinematic = true;
+//        isSinking = true;
+//		Debug.Log (scoreValue);
+//
+//        ScoreManager.score += scoreValue;
+//		Debug.Log (ScoreManager.score);
+//        Destroy (gameObject, 2f);
+//    }
 }

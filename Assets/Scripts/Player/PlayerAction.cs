@@ -10,6 +10,8 @@ public class PlayerAction : MonoBehaviour {
 	GameObject capturer;
 	GameObject curCapturer;
 	PlayerMovement playerMovement;
+	PlayerHealth playerHealth;
+	Rigidbody playerRigidBody;
 	EnemyHealth curEnemyHealth;
 //	EnemyAttack capturer;
 
@@ -30,7 +32,8 @@ public class PlayerAction : MonoBehaviour {
 	{
 
 		playerMovement = GetComponent <PlayerMovement> ();
-
+		playerRigidBody = GetComponent<Rigidbody> ();
+		playerHealth = GetComponent<PlayerHealth> ();
 //		shootableMask = LayerMask.GetMask ("Shootable");
 //		gunParticles = GetComponent<ParticleSystem> ();
 //		gunLine = GetComponent <LineRenderer> ();
@@ -71,7 +74,20 @@ public class PlayerAction : MonoBehaviour {
 //		gunLight.enabled = false;
 	}
 
+	public void LootVisitor (GameObject colObject) {
 
+		VisitorMovement visitorMovement = colObject.GetComponent<VisitorMovement> ();
+		//		VisitorMeta visitorMeta = colObject.GetComponent<VisitorMeta> ();
+		VisitorHealth visitorHealth = colObject.GetComponent<VisitorHealth>();
+
+		// push the visitor with current force
+		float energyReturn = visitorHealth.VisitorAttacked();
+
+		Vector3 currentForce = playerRigidBody.velocity;
+
+		visitorMovement.LootResponse (currentForce);
+		playerHealth.Eat (energyReturn);
+	}
 
 	void Action ()
 	{
@@ -81,6 +97,8 @@ public class PlayerAction : MonoBehaviour {
 		if (playerMovement.isCaptured == true) {
 			
 			curEnemyHealth.GetWhacked ();
+		} else {
+			playerMovement.PounceForward ();
 		}
 //		gunAudio.Play ();
 //
@@ -108,5 +126,7 @@ public class PlayerAction : MonoBehaviour {
 //		{
 //			gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
 //		}
+
+
 	}
 }

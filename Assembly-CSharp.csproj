@@ -65,6 +65,11 @@
      <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerShooting.cs" />
+     <Compile Include="Assets\Scripts\Util\WanderingAI.cs" />
+     <Compile Include="Assets\Scripts\Visitor\VisitorHealth.cs" />
+     <Compile Include="Assets\Scripts\Visitor\VisitorMeta.cs" />
+     <Compile Include="Assets\Scripts\Visitor\VisitorMovement.cs" />
+     <Compile Include="Assets\Scripts\Visitor\VisitorSight.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
