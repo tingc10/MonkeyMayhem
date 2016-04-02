@@ -35,7 +35,9 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = startingHealth;
     }
 
-	void loseEnergy() {
+
+
+	void LoseEnergy() {
 		timer += Time.deltaTime;
 		if (timer >= energyLossSpeed && currentHealth > 0) {
 			timer = 0f;
@@ -59,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update ()
     {
-		loseEnergy ();
+		LoseEnergy ();
 //		UIFlashDamage();
         
     }
@@ -80,6 +82,11 @@ public class PlayerHealth : MonoBehaviour
             Death ();
         }
     }
+
+	public void Eat(float healthReturned) {
+		currentHealth += healthReturned;
+		healthSlider.value = currentHealth;
+	}
 
 
     void Death ()

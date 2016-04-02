@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Capturer
+  - Visitor
+  - Floor
   layers:
   - Default
   - TransparentFX

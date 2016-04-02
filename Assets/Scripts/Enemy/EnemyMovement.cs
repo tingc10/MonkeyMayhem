@@ -20,9 +20,11 @@ public class EnemyMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag ("Player").transform;
 		playerMovement = player.GetComponent<PlayerMovement> ();
         playerHealth = player.GetComponent <PlayerHealth> ();
+
 		anim = GetComponent<Animator> ();
 		enemyHealth = GetComponent <EnemyHealth> ();
         nav = GetComponent <NavMeshAgent> ();
+
 		anim.SetBool ("isWalking", true);
     }
 
