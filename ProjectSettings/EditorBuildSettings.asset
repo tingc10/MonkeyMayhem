@@ -6,6 +6,28 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/_CompletedAssets/Scenes/Level 01 5.x.unity
+    path: Assets/SampleScenes/Scenes/2dCharacter.unity
+  - enabled: 0
+    path: Assets/SampleScenes/Scenes/AircraftJet2Axis.unity
+  - enabled: 0
+    path: Assets/SampleScenes/Scenes/AircraftJetAI.unity
+  - enabled: 0
+    path: Assets/SampleScenes/Scenes/AircraftPropeller4Axis.unity
+  - enabled: 0
+    path: Assets/SampleScenes/Scenes/AircraftPropellerAI.unity
+  - enabled: 0
+    path: Assets/SampleScenes/Scenes/Car.unity
+  - enabled: 0
+    path: Assets/SampleScenes/Scenes/CarAIWaypointBased.unity
+  - enabled: 0
+    path: Assets/SampleScenes/Scenes/CharacterFirstPerson.unity
+  - enabled: 0
+    path: Assets/SampleScenes/Scenes/CharacterThirdPerson.unity
+  - enabled: 0
+    path: Assets/SampleScenes/Scenes/CharacterThirdPersonAI.unity
+  - enabled: 0
+    path: Assets/SampleScenes/Scenes/Particles.unity
+  - enabled: 0
+    path: Assets/SampleScenes/Scenes/RollerBall.unity
   - enabled: 1
-    path: Assets/Scenes/Level01.unity
+    path: Assets/Quantum Theory/Polyworld/Scenes/Demo_Woodland-Mobile.unity
