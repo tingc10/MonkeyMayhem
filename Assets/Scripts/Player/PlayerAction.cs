@@ -58,10 +58,10 @@ public class PlayerAction : MonoBehaviour {
 //		}
 	}
 	void OnTriggerEnter (Collider other) {
-		Debug.Log (capturer);
+//		Debug.Log (capturer);
 
 		if (other.gameObject.tag == "Capturer") {
-			Debug.Log ("HELLO");
+//			Debug.Log ("HELLO");
 			curCapturer = other.gameObject;
 			curEnemyHealth = curCapturer.GetComponent <EnemyHealth> ();
 		}

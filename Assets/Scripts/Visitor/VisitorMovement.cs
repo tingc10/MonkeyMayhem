@@ -43,43 +43,39 @@ public class VisitorMovement : MonoBehaviour {
 				nav.enabled = true;
 			}
 			switch(currentAwareness) {
-			case Awareness.Oblivious:
+				case Awareness.Oblivious:
 
-				visitorWander.enabled = true;
-//				anim.SetBool ("IsWalking", false);
-				break;
-			case Awareness.Cautious:
-				visitorWander.enabled = false;
-				// Cautiousness makes visitor run away as long as monkey is within trigger
-				timer += Time.deltaTime;
-				if (timer >= cautionDuration) {
-					currentAwareness = Awareness.Oblivious;
-				}
-				// make visitor run away
-//				if (nav.enabled == false) {
-//					nav.enabled = true;
-//					//					Debug.Log ("WALK");
-//					anim.SetBool ("IsWalking", true);
-//				}
-				RunAway ();
-				break;
-			case Awareness.Terrified:
-				visitorWander.enabled = false;
-				// make visitor run away
-//				if (nav.enabled == false) {
-//					nav.enabled = true;
-//					//					Debug.Log ("RUN");
-//					anim.SetBool ("IsWalking", true);
-//				}
-				RunAway ();
-				break;
-			default:
-				Debug.Log ("Unidentified Awareness");
-				break;
+					visitorWander.enabled = true;
+
+					break;
+				case Awareness.Cautious:
+					visitorWander.enabled = false;
+					// Cautiousness makes visitor run away as long as monkey is within trigger
+					timer += Time.deltaTime;
+					if (timer >= cautionDuration) {
+						currentAwareness = Awareness.Oblivious;
+					}
+
+					RunAway ();
+					break;
+				case Awareness.Terrified:
+					visitorWander.enabled = false;
+					
+					RunAway ();
+					break;
+				default:
+					Debug.Log ("Unidentified Awareness");
+					break;
+			}
+			if (isIdle ()) {
+				anim.SetBool ("IsWalking", false);
+			} else {
+				anim.SetBool ("IsWalking", true);
 			}
 		} else {
 			nav.enabled = false;
 		}
+
 	}
 
 	void RunAway() {
@@ -94,9 +90,19 @@ public class VisitorMovement : MonoBehaviour {
 	}
 
 
-	void isIdle () {
-		Debug.Log (transform.position);
-		Debug.Log (visitorWander.NewDestination ());
+	bool isIdle () {
+		// Check if we've reached the destination
+		if (!nav.pathPending)
+		{
+			if (nav.remainingDistance <= nav.stoppingDistance)
+			{
+				if (!nav.hasPath || nav.velocity.sqrMagnitude == 0f)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public void LootResponse(Vector3 appliedForce) {
