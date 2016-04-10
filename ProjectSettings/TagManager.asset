@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Capturer
   - Visitor
-  - Floor
   layers:
   - Default
   - TransparentFX
@@ -16,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - Floor
-  - Shootable
-  - LightMask
-  - Invisible
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

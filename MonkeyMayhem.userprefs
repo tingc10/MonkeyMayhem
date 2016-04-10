@@ -1,9 +1,8 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
+﻿<Properties GitUserInfo="UsingGIT" StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player/PlayerAction.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Util/WanderingAI.cs">
     <Files>
-      <File FileName="Assets/Scripts/Player/PlayerAction.cs" Line="72" Column="3" />
-      <File FileName="Assets/Scripts/Player/PlayerMovement.cs" Line="62" Column="37" />
+      <File FileName="Assets/Scripts/Util/WanderingAI.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
