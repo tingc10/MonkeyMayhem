@@ -1,17 +1,10 @@
-﻿<Properties GitUserInfo="UsingGIT" StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Util/WanderingAI.cs">
-    <Files>
-      <File FileName="Assets/Scripts/Util/WanderingAI.cs" Line="1" Column="1" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Camera/AutoTransparent.cs">
+﻿<Properties StartupItem="Assembly-CSharp.csproj" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="Assets/Scripts/Player/PlayerHealth.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Camera/CameraFollow.cs" Line="24" Column="125" />
-      <File FileName="Assets/Scripts/Player/PlayerMovement.cs" Line="37" Column="3" />
-      <File FileName="Assets/Scripts/Camera/AutoTransparent.cs" Line="23" Column="8" />
->>>>>>> f94c94080654d2adf3ce89b9c8c0275ad9402f0d
+      <File FileName="Assets/Scripts/Player/PlayerAction.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Camera/AutoTransparent.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
