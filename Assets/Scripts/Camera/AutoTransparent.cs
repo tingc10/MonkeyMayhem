@@ -19,8 +19,8 @@ public class AutoTransparent : MonoBehaviour {
 			// Save the current shader
 			m_OldShader = rend.material.shader;
 			m_OldColor  = rend.material.color;
-			rend.material.color = new Color(255, 0, 0, 0.3f);
-			rend.material.shader = Shader.Find ("Particles/Additive");
+			rend.material.color = new Color(255, 0, 0, 0.8f);
+			rend.material.shader = Shader.Find ("Mobile/Particles/Additive");
 		}
 	}
 	void Update()
