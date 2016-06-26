@@ -337,7 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0.05
   energyDrain: 1
-  escapeThreshold: 5
+  escapeThreshold: 2
 --- !u!135 &13518008
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -409,7 +409,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 131556}
   m_Enabled: 1
   m_Radius: 0.3
-  m_Speed: 2.5
+  m_Speed: 13
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

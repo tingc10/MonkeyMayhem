@@ -30,7 +30,8 @@ public class EnemyMovement : MonoBehaviour
 
 	public void Stun ()
 	{
-		playerMovement.isCaptured = false;
+		
+		playerMovement.ReleasePlayer ();
 		nav.enabled = false;
 		isStunned = true;
 		timer = 0f;

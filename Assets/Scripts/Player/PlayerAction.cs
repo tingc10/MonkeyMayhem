@@ -46,10 +46,26 @@ public class PlayerAction : MonoBehaviour {
 	{
 		timer += Time.deltaTime;
 
-		if(Input.GetMouseButtonDown (0) && timer >= timeBetweenBullets && Time.timeScale != 0)
-		{
-//			Debug.Log ("hi");
-			Action ();
+//		if(Input.GetMouseButtonDown (0) && timer >= timeBetweenBullets && Time.timeScale != 0)
+		foreach (Touch curTouch in Input.touches) {
+			string debugOutput = "";
+			switch (curTouch.phase) {
+			case TouchPhase.Began:
+				debugOutput += "Began:";
+				break;
+			case TouchPhase.Ended:
+				debugOutput += "Ended:";
+				break;
+			default:
+				debugOutput += "Some other touch:";
+				break;
+			}
+			debugOutput += curTouch.tapCount + "\n";
+			Debug.Log (debugOutput);
+			if (curTouch.tapCount >= 1 && curTouch.phase == TouchPhase.Ended) {
+				Action ();
+				Debug.Log ("jump");
+			}
 		}
 
 //		if(timer >= timeBetweenBullets * effectsDisplayTime)

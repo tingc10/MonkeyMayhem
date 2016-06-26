@@ -7,9 +7,7 @@ public class EnemyManager : MonoBehaviour
     public float spawnTime = 3f;
     public Transform[] spawnPoints;
 	public int maxInstantiations = 3;
-
-
-	int numEnemiesActive = 0;
+	public static int numEnemiesActive = 0;
 
 	/**
 	 *  Checks if the target is on navmesh
@@ -29,6 +27,7 @@ public class EnemyManager : MonoBehaviour
     void Start ()
     {
         InvokeRepeating ("Spawn", spawnTime, spawnTime);
+		numEnemiesActive = 0;
     }
 
 

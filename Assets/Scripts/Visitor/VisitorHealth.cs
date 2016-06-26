@@ -5,7 +5,7 @@ public class VisitorHealth : MonoBehaviour {
 	public int faintThreshold = 2;
 	public bool hasFainted = false;
 	public float sinkSpeed = 2.5f;
-
+	public int scoreValue = 1;
 	CapsuleCollider capsuleCollider;
 	VisitorMeta visitorMeta;
 	int timesAttacked = 0;
@@ -22,7 +22,9 @@ public class VisitorHealth : MonoBehaviour {
 		if (timesAttacked == faintThreshold) {
 			hasFainted = true;
 
-			Faint();
+			Faint ();
+		} else {
+			ScoreManager.score += scoreValue;
 		}
 		return visitorMeta.healthReturned;
 	}
@@ -36,9 +38,10 @@ public class VisitorHealth : MonoBehaviour {
 	void Faint ()
 	{
 		hasFainted = true;
-
+		Debug.Log (EnemyManager.numEnemiesActive);
+		EnemyManager.numEnemiesActive--;
 //		capsuleCollider.isTrigger = true;
-
+		ScoreManager.score += scoreValue*5;
 		anim.SetTrigger ("Die");
 
 //		enemyAudio.clip = deathClip;
